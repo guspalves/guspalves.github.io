@@ -1,0 +1,39 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    font-family: 'Roboto', sans-serif;
+    background-image: linear-gradient(to right, rgb(71, 151, 248), rgb(2, 69, 150));
+}
+
+.name{
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 22px;
+}
+
+.links{
+    display: flex;
+    justify-content: space-around;
+    width: 35%;
+}
+
+.links li{
+    list-style: none;
+}
+
+.links a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 14px;
+}
