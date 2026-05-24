@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "building-simple-systems",
+    "title": "Building Simple Systems",
+    "excerpt": "Why I like keeping projects small, understandable, and easy to maintain.",
+    "date": "2026-05-01",
+    "tags": [
+      "Writing",
+      "Productivity"
+    ],
+    "type": "posts"
+  },
+  {
+    "slug": "cleaner-workflow-for-focus",
+    "title": "A Cleaner Workflow for Focus",
+    "excerpt": "A few habits and tools that help me stay focused when I’m juggling many tasks.",
+    "date": "2026-04-20",
+    "tags": [
+      "Productivity",
+      "Tools"
+    ],
+    "type": "posts"
+  },
+  {
+    "slug": "learning-in-public",
+    "title": "Notes on Learning in Public",
+    "excerpt": "How sharing work as you go can make the process more useful for both you and your readers.",
+    "date": "2026-03-14",
+    "tags": [
+      "Writing",
+      "Career"
+    ],
+    "type": "posts"
+  }
+]
