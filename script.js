@@ -127,7 +127,7 @@ async function loadMarkdown(path) {
 }
 
 async function loadPosts() {
-  const response = await fetch("/posts/index.json");
+  const response = await fetch("./posts/index.json");
   return response.json();
 }
 
@@ -159,7 +159,7 @@ function renderPosts(posts, activeTag) {
             <time class="date" datetime="${post.date}">${formatDate(post.date)}</time>
             ${post.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
           </div>
-          <h3><a href="/post.html?slug=${post.slug}">${post.title}</a></h3>
+          <h3><a href="post.html?slug=${post.slug}">${post.title}</a></h3>
           <p>${post.excerpt}</p>
         </article>
       `,
@@ -198,13 +198,13 @@ async function initPostPage() {
     return;
   }
 
-  const markdown = await loadMarkdown(`/posts/${post.slug}.md`);
+  const markdown = await loadMarkdown(`./posts/${post.slug}.md`);
   const { body } = parseFrontMatter(markdown);
   document.title = `${post.title} | Portfolio`;
 
   container.innerHTML = `
     <article class="article">
-      <a class="back-link" href="/">← Back to home</a>
+      <a class="back-link" href="./">← Back to home</a>
       <header class="article-head">
         <div class="meta">
           <time class="date" datetime="${post.date}">${formatDate(post.date)}</time>
