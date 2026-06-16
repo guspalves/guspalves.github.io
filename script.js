@@ -2,7 +2,7 @@ const postsEl = document.getElementById("posts");
 const filtersEl = document.getElementById("filters");
 const countEl = document.getElementById("postCount");
 
-const markdownCache = new Map();
+const contentCache = new Map();
 
 function escapeHtml(value) {
   return value
@@ -19,111 +19,6 @@ function formatDate(dateString) {
     day: "numeric",
     year: "numeric",
   }).format(new Date(dateString));
-}
-
-function parseFrontMatter(content) {
-  const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-  if (!match) {
-    return { meta: {}, body: content };
-  }
-
-  const meta = {};
-  for (const line of match[1].split("\n")) {
-    const index = line.indexOf(":");
-    if (index === -1) continue;
-    const key = line.slice(0, index).trim();
-    const value = line.slice(index + 1).trim();
-    meta[key] = value.startsWith("[") ? JSON.parse(value) : value;
-  }
-
-  return { meta, body: match[2] };
-}
-
-function parseInlineMarkdown(text) {
-  return escapeHtml(text)
-    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>')
-    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\*(.+?)\*/g, "<em>$1</em>");
-}
-
-function markdownToHtml(markdown) {
-  const lines = markdown.trim().split("\n");
-  const html = [];
-  let inList = false;
-  let inCode = false;
-  let codeLines = [];
-
-  const closeList = () => {
-    if (inList) {
-      html.push("</ul>");
-      inList = false;
-    }
-  };
-
-  for (const line of lines) {
-    if (line.startsWith("```")) {
-      if (inCode) {
-        html.push(`<pre><code>${escapeHtml(codeLines.join("\n"))}</code></pre>`);
-        inCode = false;
-        codeLines = [];
-      } else {
-        closeList();
-        inCode = true;
-      }
-      continue;
-    }
-
-    if (inCode) {
-      codeLines.push(line);
-      continue;
-    }
-
-    if (!line.trim()) {
-      closeList();
-      continue;
-    }
-
-    if (line.startsWith("### ")) {
-      closeList();
-      html.push(`<h3>${parseInlineMarkdown(line.slice(4))}</h3>`);
-      continue;
-    }
-
-    if (line.startsWith("## ")) {
-      closeList();
-      html.push(`<h2>${parseInlineMarkdown(line.slice(3))}</h2>`);
-      continue;
-    }
-
-    if (line.startsWith("# ")) {
-      closeList();
-      html.push(`<h1>${parseInlineMarkdown(line.slice(2))}</h1>`);
-      continue;
-    }
-
-    if (line.startsWith("- ")) {
-      if (!inList) {
-        html.push("<ul>");
-        inList = true;
-      }
-      html.push(`<li>${parseInlineMarkdown(line.slice(2))}</li>`);
-      continue;
-    }
-
-    closeList();
-    html.push(`<p>${parseInlineMarkdown(line)}</p>`);
-  }
-
-  closeList();
-  return html.join("");
-}
-
-async function loadMarkdown(path) {
-  if (markdownCache.has(path)) return markdownCache.get(path);
-  const response = await fetch(path);
-  const content = await response.text();
-  markdownCache.set(path, content);
-  return content;
 }
 
 async function loadPosts() {
@@ -184,22 +79,35 @@ async function initHomePage() {
   update();
 }
 
+async function loadPostContent(slug) {
+  if (contentCache.has(slug)) return contentCache.get(slug);
+  const response = await fetch("./posts/index.json");
+  const posts = await response.json();
+  const post = posts.find((entry) => entry.slug === slug);
+
+  if (!post) return null;
+
+  contentCache.set(slug, post);
+  return post;
+}
+
+function renderPostBody(markdownHtml) {
+  return markdownHtml;
+}
+
 async function initPostPage() {
   const container = document.getElementById("post");
   if (!container) return;
 
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("slug");
-  const posts = await loadPosts();
-  const post = posts.find((entry) => entry.slug === slug);
+  const post = await loadPostContent(slug);
 
   if (!post) {
     container.innerHTML = `<p class="not-found">Post not found.</p>`;
     return;
   }
 
-  const markdown = await loadMarkdown(`./posts/${post.slug}.md`);
-  const { body } = parseFrontMatter(markdown);
   document.title = `${post.title} | Portfolio`;
 
   container.innerHTML = `
@@ -214,7 +122,7 @@ async function initPostPage() {
         <p class="intro">${post.excerpt}</p>
       </header>
       <section class="article-body">
-        ${markdownToHtml(body)}
+        ${post.bodyHtml || ""}
       </section>
     </article>
   `;

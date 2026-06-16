@@ -8,7 +8,7 @@
       "Writing",
       "Productivity"
     ],
-    "type": "posts"
+    "bodyHtml": "<h1>Building Simple Systems</h1><p>I try to keep my workflow simple on purpose.</p><p>Small systems are easier to understand, easier to change, and easier to trust.</p><h2>What I look for</h2><ul><li>clear inputs</li><li>a small number of steps</li><li>obvious outcomes</li></ul><h2>The goal</h2><p>The goal is not to have the most advanced system. The goal is to have one I can keep using.</p>"
   },
   {
     "slug": "cleaner-workflow-for-focus",
@@ -19,7 +19,7 @@
       "Productivity",
       "Tools"
     ],
-    "type": "posts"
+    "bodyHtml": "<h1>A Cleaner Workflow for Focus</h1><p>Focus is easier when the environment is quiet.</p><p>That means fewer tabs, fewer lists, and fewer decisions.</p><h2>My basics</h2><ul><li>a short task list</li><li>one place for notes</li><li>a fixed time to review what matters</li></ul>"
   },
   {
     "slug": "learning-in-public",
@@ -30,6 +30,6 @@
       "Writing",
       "Career"
     ],
-    "type": "posts"
+    "bodyHtml": "<h1>Notes on Learning in Public</h1><p>Writing while I’m learning helps me notice what I actually understand.</p><p>It also makes it easier for other people to follow the process.</p><h2>Why it helps</h2><p>1. It creates a record.</p><p>2. It surfaces gaps quickly.</p><p>3. It makes progress visible.</p>"
   }
 ]
