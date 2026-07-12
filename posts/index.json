@@ -8,7 +8,9 @@
       "Writing",
       "Productivity"
     ],
-    "bodyHtml": "<h1>Building Simple Systems</h1><p>I try to keep my workflow simple on purpose.</p><p>Small systems are easier to understand, easier to change, and easier to trust.</p><h2>What I look for</h2><ul><li>clear inputs</li><li>a small number of steps</li><li>obvious outcomes</li></ul><h2>The goal</h2><p>The goal is not to have the most advanced system. The goal is to have one I can keep using.</p>"
+    "readingMinutes": 1,
+    "cover": "",
+    "bodyHtml": "<p>I try to keep my workflow simple on purpose.</p>\n<p>Small systems are easier to understand, easier to change, and easier to trust.</p>\n<figure class=\"article-figure\"><img src=\"./posts/images/simple-systems.svg\" alt=\"A diagram showing a clear path from input through a small system to an outcome\" loading=\"lazy\" decoding=\"async\"><figcaption>A small system keeps the path from input to outcome easy to inspect.</figcaption></figure>\n<h2 id=\"what-i-look-for\">What I look for</h2>\n<ul>\n<li>clear inputs</li>\n<li>a small number of steps</li>\n<li>obvious outcomes</li>\n</ul>\n<h2 id=\"the-goal\">The goal</h2>\n<p>The goal is not to have the most advanced system. The goal is to have one I can keep using.</p>"
   },
   {
     "slug": "cleaner-workflow-for-focus",
@@ -19,7 +21,9 @@
       "Productivity",
       "Tools"
     ],
-    "bodyHtml": "<h1>A Cleaner Workflow for Focus</h1><p>Focus is easier when the environment is quiet.</p><p>That means fewer tabs, fewer lists, and fewer decisions.</p><h2>My basics</h2><ul><li>a short task list</li><li>one place for notes</li><li>a fixed time to review what matters</li></ul>"
+    "readingMinutes": 1,
+    "cover": "",
+    "bodyHtml": "<p>Focus is easier when the environment is quiet.</p>\n<p>That means fewer tabs, fewer lists, and fewer decisions.</p>\n<h2 id=\"my-basics\">My basics</h2>\n<ul>\n<li>a short task list</li>\n<li>one place for notes</li>\n<li>a fixed time to review what matters</li>\n</ul>"
   },
   {
     "slug": "learning-in-public",
@@ -30,6 +34,8 @@
       "Writing",
       "Career"
     ],
-    "bodyHtml": "<h1>Notes on Learning in Public</h1><p>Writing while I’m learning helps me notice what I actually understand.</p><p>It also makes it easier for other people to follow the process.</p><h2>Why it helps</h2><p>1. It creates a record.</p><p>2. It surfaces gaps quickly.</p><p>3. It makes progress visible.</p>"
+    "readingMinutes": 1,
+    "cover": "",
+    "bodyHtml": "<p>Writing while I’m learning helps me notice what I actually understand.</p>\n<p>It also makes it easier for other people to follow the process.</p>\n<h2 id=\"why-it-helps\">Why it helps</h2>\n<ol>\n<li>It creates a record.</li>\n<li>It surfaces gaps quickly.</li>\n<li>It makes progress visible.</li>\n</ol>"
   }
 ]

@@ -3,23 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Post</title>
-    <meta name="description" content="Blog post page." />
+    <meta name="color-scheme" content="light dark" />
+    <title>Article | Gus Alves</title>
+    <meta name="description" content="A technical article by Gus Alves." />
+    <meta property="og:type" content="article" />
     <link rel="stylesheet" href="styles.css" />
     <script defer src="script.js"></script>
   </head>
   <body>
-    <header class="topbar">
-      <a class="brand" href="./">Your Name</a>
-      <nav class="nav">
-        <a href="Gus_Alves_Resume.pdf" target="_blank" rel="noreferrer">Resume</a>
-        <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="mailto:you@example.com">Email</a>
-      </nav>
+    <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="./" aria-label="Gus Alves, home">
+          <span class="brand-mark" aria-hidden="true">GA<span>.</span></span>
+          <span class="brand-name">Gus Alves</span>
+        </a>
+
+        <div class="header-actions">
+          <nav class="site-nav" aria-label="Primary navigation">
+            <a href="./">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="Gus_Alves_Resume.pdf">Resume</a>
+          </nav>
+
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+            aria-label="Switch color theme"
+            title="Switch color theme"
+          >
+            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="3.5"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8a8.5 8.5 0 1 0 11.4 11.4Z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
     </header>
 
-    <main class="page">
-      <div id="post"></div>
+    <main id="main-content" class="article-page">
+      <div class="article-shell" id="post">
+        <div class="article-loading" aria-live="polite">
+          <span class="loading-dot"></span>
+          Loading article...
+        </div>
+      </div>
     </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <p>&copy; <span data-current-year>2026</span> Gus Alves</p>
+        <p>Built with plain HTML, CSS, JavaScript, and Markdown.</p>
+      </div>
+    </footer>
   </body>
 </html>

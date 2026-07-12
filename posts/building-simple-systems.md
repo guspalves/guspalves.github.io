@@ -11,6 +11,8 @@ I try to keep my workflow simple on purpose.
 
 Small systems are easier to understand, easier to change, and easier to trust.
 
+![A diagram showing a clear path from input through a small system to an outcome](images/simple-systems.svg "A small system keeps the path from input to outcome easy to inspect.")
+
 ## What I look for
 
 - clear inputs
