@@ -12,7 +12,7 @@
   --accent: #e6532f;
   --accent-strong: #bd3518;
   --accent-soft: rgba(230, 83, 47, 0.1);
-  --header: rgba(245, 245, 239, 0.86);
+  --header: #f5f5ef;
   --code-bg: #20211e;
   --code-text: #f1f1ea;
   --shadow-sm: 0 1px 2px rgba(20, 21, 18, 0.05);
@@ -42,7 +42,7 @@
   --accent: #ff7958;
   --accent-strong: #ff9a80;
   --accent-soft: rgba(255, 121, 88, 0.12);
-  --header: rgba(17, 18, 15, 0.86);
+  --header: #11120f;
   --code-bg: #080906;
   --code-text: #eeefe7;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -64,14 +64,15 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  overflow-x: clip;
   background:
-    radial-gradient(circle at 84% 7%, var(--accent-soft), transparent 24rem),
+    radial-gradient(circle at 84% 7%, var(--accent-soft), transparent 24rem)
+      top center / 100% 720px no-repeat,
     var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.6;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -135,8 +136,6 @@ svg {
   z-index: 50;
   border-bottom: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
   background: var(--header);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
 }
 
 .header-inner {
@@ -421,7 +420,6 @@ svg {
   height: 100%;
   object-fit: cover;
   object-position: center 25%;
-  filter: saturate(0.85) contrast(1.03);
 }
 
 .profile-accent {
@@ -1452,6 +1450,8 @@ svg {
     grid-template-columns: minmax(140px, 0.75fr) minmax(150px, 1fr);
     align-items: center;
     justify-self: stretch;
+    background: var(--surface);
+    box-shadow: var(--shadow-sm);
     transform: none;
   }
 
@@ -1482,6 +1482,10 @@ svg {
 
   .article-card {
     min-height: 360px;
+  }
+
+  .skeleton::after {
+    display: none;
   }
 
   .footer-inner {
@@ -1519,6 +1523,22 @@ svg {
   .article-footer {
     align-items: flex-start;
     flex-direction: column;
+  }
+}
+
+@media (hover: none) {
+  .profile-card:hover {
+    transform: none;
+  }
+
+  .article-card:hover {
+    border-color: var(--line);
+    box-shadow: var(--shadow-sm);
+    transform: none;
+  }
+
+  .article-card:hover .article-cover img {
+    transform: none;
   }
 }
 

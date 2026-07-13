@@ -384,7 +384,7 @@ async function initPostPage() {
           <h1>${escapeHtml(post.title)}</h1>
           <p class="article-deck">${escapeHtml(post.excerpt)}</p>
           <div class="article-byline">
-            <img src="profile.jpg" alt="" width="44" height="44">
+            <img src="profile-avatar.jpg" alt="" width="44" height="44" decoding="async">
             <div>
               <strong>Gus Alves</strong>
               <p>
