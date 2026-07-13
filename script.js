@@ -192,6 +192,20 @@ function matchingPosts(posts, state) {
 }
 
 function renderPosts(posts, tags, state) {
+  if (!posts.length) {
+    filtersEl.innerHTML = "";
+    countEl.textContent = "Articles coming soon";
+    clearFiltersEl.hidden = true;
+    postsEl.innerHTML = `
+      <div class="empty-state">
+        <span class="empty-state-icon" aria-hidden="true">+</span>
+        <h3>New writing is on the way.</h3>
+        <p>Technical articles and project notes will appear here soon.</p>
+      </div>
+    `;
+    return;
+  }
+
   const visiblePosts = matchingPosts(posts, state);
   const hasFilters = Boolean(state.query || state.activeTag);
 
@@ -241,10 +255,11 @@ async function initHomePage() {
     const params = new URLSearchParams(window.location.search);
     const requestedTag = params.get("tag") || "";
     const state = {
-      query: (params.get("q") || "").trim(),
+      query: posts.length ? (params.get("q") || "").trim() : "",
       activeTag: tags.includes(requestedTag) ? requestedTag : "",
     };
 
+    searchEl.closest(".article-tools").hidden = !posts.length;
     searchEl.value = state.query;
 
     const update = (restoreTagFocus = false) => {
